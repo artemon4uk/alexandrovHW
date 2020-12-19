@@ -78,7 +78,6 @@ public class WeatherService {
         try {
             json = objectMapper.readTree(response.getBody());
         } catch (IOException e) {
-            e.printStackTrace();
             return null;
         }
         json = json.get("forecast").get("forecastday").get(0).get("day");

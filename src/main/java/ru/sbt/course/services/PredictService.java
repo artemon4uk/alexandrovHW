@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class PredictService {
-    private final static int N_DAYS = 7;
+    private static final int N_DAYS = 7;
 
     private final WeatherService weatherService;
     private final CurrencyService currencyService;
