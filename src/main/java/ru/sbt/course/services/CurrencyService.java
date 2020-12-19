@@ -30,10 +30,8 @@ public class CurrencyService {
             LocalDate day = today.minusDays(i);
             Optional<Currency> currencyFromRepo = currencyRepository.findByDate(day);
             if (currencyFromRepo.isPresent()) {
-                System.out.println("Currency is taken from BD");
                 currencies.add(currencyFromRepo.get().getValue());
             } else {
-                System.out.println("Currency is taken from response");
                 double value = getDollarValue(day);
                 currencies.add(value);
                 currencyRepository.save(new Currency(day, value));

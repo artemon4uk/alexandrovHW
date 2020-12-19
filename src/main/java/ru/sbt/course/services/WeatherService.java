@@ -56,11 +56,9 @@ public class WeatherService {
             LocalDate day = today.minusDays(i);
             Optional<Weather> weatherFromRepo = weatherRepository.findByCityAndDate(city, day);
             if (weatherFromRepo.isPresent()) {
-                System.out.println("Weather is taken from BD");
                 weatherList.add(weatherFromRepo.get());
             }
             else {
-                System.out.println("Weather is taken from response");
                 ResponseEntity<String> response = restTemplate.getForEntity(getUrlForHistory(city, day), String.class);
                 Weather weather = getWeather(response, city, day);
                 weatherList.add(weather);
