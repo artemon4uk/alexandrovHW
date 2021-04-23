@@ -2,11 +2,7 @@ package ru.sbt.course;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.client.RestTemplate;
@@ -18,15 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@EnableDiscoveryClient
-@SpringBootApplication
 public class WeatherService {
     private final ObjectMapper objectMapper;
     private final RestTemplate restTemplate;
     private final WeatherRepository weatherRepository;
     private static final String API_KEY = "6b18f848502f4a6588293139201512";
 
-    @Autowired
     public WeatherService(RestTemplateBuilder restTemplateBuilder,
                           ObjectMapper mapper,
                           WeatherRepository weatherRepository) {
@@ -96,9 +89,5 @@ public class WeatherService {
 
     private String getUrlForForecast(String city) {
         return "http://api.weatherapi.com/v1/forecast.json?key=" + API_KEY + "&q=" + city + "&days=1";
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(WeatherService.class, args);
     }
 }

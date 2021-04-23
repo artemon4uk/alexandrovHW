@@ -1,16 +1,11 @@
 package ru.sbt.course;
 
 import org.apache.commons.math3.stat.regression.SimpleRegression;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-@EnableDiscoveryClient
-@SpringBootApplication
+
 public class PredictService {
     private static final int N_DAYS = 7;
 
@@ -21,7 +16,6 @@ public class PredictService {
     private final RestTemplate restTemplate;
     private SimpleRegression simpleRegression;
 
-    @Autowired
     public PredictService(RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder.build();
     }
@@ -44,9 +38,5 @@ public class PredictService {
 
     private double predictCurrency(Double value) {
         return simpleRegression.predict(value);
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(PredictService.class, args);
     }
 }

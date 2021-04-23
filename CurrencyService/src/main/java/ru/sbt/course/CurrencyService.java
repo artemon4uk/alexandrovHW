@@ -1,10 +1,7 @@
 package ru.sbt.course;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -13,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@EnableDiscoveryClient
-@SpringBootApplication
 public class CurrencyService {
     private final RestTemplate restTemplate;
     private final CurrencyRepository currencyRepository;
@@ -58,9 +53,5 @@ public class CurrencyService {
     private String getUrl(LocalDate date) {
         return "http://www.cbr.ru/scripts/XML_daily.asp?date_req="
                 + date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(CurrencyService.class, args);
     }
 }
