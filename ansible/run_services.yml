@@ -15,18 +15,6 @@
     ansible_connection: local
 
   tasks:
-    - name: pull currency
-      command: docker pull "{{ currency_service_image }}"
-
-    - name: pull weather
-      command: docker pull "{{ weather_service_image }}"
-
-    - name: pull predict
-      command: docker pull "{{ predict_service_image }}"
-
-    - name: pull eureka
-      command: docker pull "{{ eureka_image }}"
-
     - name: create docker compose
       template:
         src: "{{ path }}/alexandrovHW/ansible/templates/docker-compose.yml.j2"
