@@ -1,6 +1,6 @@
 ---
 - name: run services
-  hosts: services
+  hosts: local
   become: yes
   vars:
     ansible_ssh_user: mftiedu
@@ -9,9 +9,10 @@
     currency_service_image: artemon4uk/currencyservice
     weather_service_image: artemon4uk/weatherservice
     predict_service_image: artemon4uk/predictservice
-    eureka_image: artemon4uk/eurekaservice
+    eureka_image: artemon4uk/eurekaserver
     path: /edu/alexandrov
     db_server: 194.87.111.112
+    ansible_connection: local
 
   tasks:
     - name: pull currency
@@ -28,7 +29,7 @@
 
     - name: create docker compose
       template:
-        src: "{{ path }}/weather-currency-app/ansible/templates/docker-compose.yml.j2"
+        src: "{{ path }}/alexandrovHW/ansible/templates/docker-compose.yml.j2"
         dest: "{{ path }}/docker-compose.yml"
 
     - name: start

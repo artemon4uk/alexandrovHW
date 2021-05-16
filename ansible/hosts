@@ -2,3 +2,5 @@
 CentOs ansible_host=194.87.111.112
 [services]
 debian ansible_host=194.87.93.27
+[local]
+localhost

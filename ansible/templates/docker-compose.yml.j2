@@ -11,8 +11,7 @@ services:
     depends_on:
       - eurekaserver
     environment:
-      - JAVA_OPTS=
-         -DB_SERVER=jdbc:postgresql://{{ db_server }}:5432/postgres
+      - spring.datasource.url=jdbc:postgresql://{{ db_server }}:5432/
   currencyservice:
     image: "{{ currency_service_image }}"
     ports:
@@ -20,8 +19,7 @@ services:
     depends_on:
       - eurekaserver
     environment:
-          - JAVA_OPTS=
-             -DB_SERVER=jdbc:postgresql://{{ db_server }}:5432/postgres
+      - spring.datasource.url=jdbc:postgresql://{{ db_server }}:5432/
   predictservice:
     image: "{{ predict_service_image }}"
     ports:
