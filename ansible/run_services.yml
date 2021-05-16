@@ -2,6 +2,16 @@
 - name: run services
   hosts: services
   become: yes
+  vars:
+    ansible_ssh_user: mftiedu
+    ansible_ssh_pass: cHONtic
+    ansible_sudo_pass: cHONtic
+    currency_service_image: artemon4uk/currencyservice
+    weather_service_image: artemon4uk/weatherservice
+    predict_service_image: artemon4uk/predictservice
+    eureka_image: artemon4uk/eurekaservice
+    path: /edu/alexandrov
+    db_server: 194.87.111.112
 
   tasks:
     - name: pull currency
