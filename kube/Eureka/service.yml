@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: Eureka
+spec:
+  ports:
+    - port: 9003
+      targetPort: 9003
+  selector:
+    app: Eureka
+  type: ClusterIP

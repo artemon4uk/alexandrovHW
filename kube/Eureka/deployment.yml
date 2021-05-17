@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Eureka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Eureka
+  template:
+    metadata:
+      name: Eureka
+      labels:
+        app: Eureka
+    spec:
+      containers:
+        - image: artemon4uk/eurekaserver
+          name: eurekaserver
+          ports:
+            - containerPort: 9003
+          imagePullPolicy: IfNotPresent

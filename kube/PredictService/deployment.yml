@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PredictService
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: PredictService
+  template:
+    metadata:
+      name: PredictService
+      labels:
+        app: PredictService
+    spec:
+      containers:
+        - image: artemon4uk/predictservice
+          name: predictservice
+          ports:
+            - containerPort: 9000
+          imagePullPolicy: IfNotPresent

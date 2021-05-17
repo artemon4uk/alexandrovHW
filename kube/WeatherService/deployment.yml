@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: WeatherService
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: WeatherService
+  template:
+    metadata:
+      name: WeatherService
+      labels:
+        app: WeatherService
+    spec:
+      containers:
+        - image: artemon4uk/weatherservice
+          name: weatherservice
+          ports:
+            - containerPort: 9001
+          imagePullPolicy: IfNotPresent
