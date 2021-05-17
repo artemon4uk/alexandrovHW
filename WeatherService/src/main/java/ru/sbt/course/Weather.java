@@ -13,7 +13,7 @@ public class Weather {
     private String city;
     private double maxTemperature;
     private double minTemperature;
-        private double avgTemperature;
+    private double avgTemperature;
 
     public Weather() {
 
