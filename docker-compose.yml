@@ -1,0 +1,33 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+    ports:
+      - "5432:5432"
+
+  eurekaserver:
+    image: eurekaserver:latest
+    ports:
+      - "9003:9003"
+
+  weatherservice:
+    image: weatherservice:latest
+    ports:
+      - "9001:9001"
+    depends_on:
+      - db
+
+  currencyservice:
+    image: currencyservice:latest
+    ports:
+      - "9002:9002"
+    depends_on:
+      - db
+
+  predictservice:
+    image: predictservice:latest
+    ports:
+      - "9000:9000"
